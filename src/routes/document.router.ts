@@ -6,7 +6,7 @@ import { validateDocumentSchema } from '../middlewares/schema.middleware'
 
 const router = Router()
 
-router.route("/document")
+router.route("/documents")
     .get(async (req:Request,res:Response)=>{
         const [response, err] = await handlePromise(
                 DocumentController.getAll()
@@ -39,7 +39,7 @@ router.route("/document")
         res.status(response.status).send(response.body)
 })
 
-router.route("/document/:id")
+router.route("/documents/:id")
     .get(idMiddleware, async (req:Request,res:Response)=>{
         const { id } = req.params
 
