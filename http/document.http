@@ -1,0 +1,33 @@
+### POST Document
+POST http://localhost:3000/documents
+Content-Type: application/json
+
+{
+  "name":"name",
+  "field1":"field1",
+  "field2": 1234,
+  "internalObject": {
+    "internalField1":"field1",
+    "internalField2": 12344,
+  }
+}
+
+### GET All
+GET http://localhost:3000/documents
+
+### GET Single
+GET http://localhost:3000/documents/{id}
+
+### DELETE Single
+DELETE  http://localhost:3000/documents/{id}
+
+### PUT Document
+PUT http://localhost:3000/documents/{id}
+Content-Type: application/json
+
+{
+  "field2": 12345,
+  "internalObject": {
+    "internalField1":"internalField1",
+  }
+}
