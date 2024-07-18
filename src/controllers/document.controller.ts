@@ -2,6 +2,7 @@ import handlePromise from "../utils/promise"
 import Document from "../types/document"
 import ApiResponse from "../types/api-response"
 import DocumentSchema from "../db/schemas/document.schema"
+import { mergeObject } from "../utils/objects"
 
 type DocumentArrayResponse = ApiResponse<Document[]>
 type DocumentResponse = ApiResponse<Document>
@@ -37,12 +38,17 @@ export default class DocumentController{
         return {status:201, body: result}
     }
 
-    static async updateById(id:string,curso:Document):Promise<DocumentResponse>{
-        const [_curso,err] = await handlePromise(
-          DocumentSchema.findOneAndUpdate({_id:id},curso)
-        )
-  
+    static async updateById(id:string,document:Document):Promise<DocumentResponse>{
+        const [_document,err] = await handlePromise(DocumentSchema.findById(id))
+
         if(err) return Promise.reject({status:500, error:err})
+
+        mergeObject(_document,  document)
+
+        const [,errSave] = await handlePromise(_document.save())
+
+        if(err) return Promise.reject({status:500, error:errSave})
+
   
         return {status:200}
     }
