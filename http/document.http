@@ -8,7 +8,7 @@ Content-Type: application/json
   "field2": "1234",
   "internalObject": {
     "internalField1": "field1",
-    "internalField2": "12344",
+    "internalField2": "12344"
   }
 }
 
@@ -28,6 +28,6 @@ Content-Type: application/json
 {
   "field2": 12345,
   "internalObject": {
-    "internalField1":"internalField1",
+    "internalField1":"internalField1"
   }
 }
