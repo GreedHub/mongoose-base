@@ -5,6 +5,7 @@ const mongooseConfig = {
     password: process.env['DB_PASSWORD'],
     collection: process.env['DB_COLLECTION'],
     authSource: process.env['DB_AUTH_SOURCE'],
+    debug: process.env['DB_DEBUG']?.toLocaleLowerCase() === 'true'
   }
   
   export default mongooseConfig

@@ -22,9 +22,19 @@ export default class MongooseDriver {
 
     const [_, err] = await handlePromise(mongoose.connect(connectionString))
 
-    if(err) return console.log(`Error al conectarse a mongo (${connectionString})`, err)
+    if(err) return console.log(`There was an error while connecting to mongodb (${connectionString})`, err)
 
-    console.log(`Conexion a mongo con exito`)
+    console.log(`Connected to mongodb!`)
+
+    if(mongooseConfig.debug) this.enableDebug();
+  }
+
+  enableDebug(){
+    mongoose.set('debug', function (coll, method, query, doc, [options]) {
+        console.log({
+            query
+        })
+    });
   }
 
   private getConnectionString(): string {
