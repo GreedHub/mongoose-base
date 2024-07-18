@@ -26,8 +26,10 @@ export default class DocumentController{
     } 
 
     static async putSingle(document:Document):Promise<DocumentResponse>{
-        const _document = new DocumentSchema(document)
+        document.isDeleted = false
         
+        const _document = new DocumentSchema(document)
+
         const [result,err] = await handlePromise(_document.save())
 
         if(err) return Promise.reject({status:500, error:err})

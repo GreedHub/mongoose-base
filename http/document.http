@@ -3,12 +3,12 @@ POST http://localhost:3000/documents
 Content-Type: application/json
 
 {
-  "name":"name",
-  "field1":"field1",
-  "field2": 1234,
+  "name": "name",
+  "field1": "field1",
+  "field2": "1234",
   "internalObject": {
-    "internalField1":"field1",
-    "internalField2": 12344,
+    "internalField1": "field1",
+    "internalField2": "12344",
   }
 }
 

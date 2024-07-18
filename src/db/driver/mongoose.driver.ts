@@ -30,11 +30,7 @@ export default class MongooseDriver {
   }
 
   enableDebug(){
-    mongoose.set('debug', function (coll, method, query, doc, [options]) {
-        console.log({
-            query
-        })
-    });
+    mongoose.set('debug', true);
   }
 
   private getConnectionString(): string {
